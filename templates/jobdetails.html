@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Job List</title>
+</head>
+
+<body style="text-align: center; background-color: lightgrey; color: black;">
+    <form action="{{ url_for('job_list') }}" method="POST" style="background-color: white; padding: 20px; border-radius: 10px; display: inline-block;">
+        <h2 style="color: rgb(255, 0, 123);">Job List</h2>
+        <label class="k" style="display: block; margin: 0 auto; color: blue;">Description</label>
+        <input type="text" name="desc" id="desc" required style="display: block; margin: 0 auto; background-color: lightyellow; color: black;">
+        <label style="display: block; margin: 0 auto; color: blue;">Location</label>
+        <input type="text" name="location" id="location" required class="k" style="display: block; margin: 0 auto; background-color: lightyellow; color: black;"><br>
+        <label class="k" style="display: block; margin: 0 auto; color: blue;">Requirements</label>
+        <input type="text" name="req" id="req" required style="display: block; margin: 0 auto; background-color: lightyellow; color: black;">
+        <label class="k" style="display: block; margin: 0 auto; color: blue;">Industry</label>
+        <input type="text" name="industry" id="industry" required style="display: block; margin: 0 auto; background-color: lightyellow; color: black;">
+        <label class="k" style="display: block; margin: 0 auto; color: blue;">Job Title</label>
+        <input type="text" name="title" id="title" required style="display: block; margin: 0 auto; background-color: lightyellow; color: black;">
+        <input type="submit" value="Submit" style="background-color: skyblue; color: white;">
+        
+
+        
+    </form>
+</body>
+
+</html>

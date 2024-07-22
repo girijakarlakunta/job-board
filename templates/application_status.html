@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Application Status</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+    a {
+        display: block;
+        text-align: center;
+        margin: 20px auto;
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        .wrapper {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+        .sidebar {
+            width: 200px;
+            height: 100%;
+            background: #343a40;
+            padding: 15px;
+            position: fixed;
+        }
+        .sidebar .navbar-brand, .sidebar .nav-link {
+            color: #fff;
+        }
+        .sidebar .nav-link.active {
+            background: #007bff;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+    
+</style>
+<body>
+    <nav class="sidebar">
+        
+        <ul class="nav flex-column mt-3">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Your Job Listings</a>
+            </li>
+            <li class="nav-item">
+
+                <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+            </li>
+        </ul>
+    </nav>
+    
+
+    <div class="container mt-5">
+        <h1 class="text-center">Your Applications</h1>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Job Title</th>
+                    <th>Cover Letter</th>
+                    <th>Resume</th>
+                    <th>Status</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for app in applications %}
+                <tr>
+                    <td>{{ app[1] }}</td>
+                    <td>{{ app[2] }}</td>
+                    <td><a href="{{ url_for('static', filename='uploads/' ~ app[3]) }}" method="POST" target="_blank">View Resume</a></td>
+                    <td>{{ app[4] }}</td>
+                    <td>
+                        <form action="{{ url_for('delete_application') }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this application?');">
+                            <input type="hidden" name="application_id" value="{{ app[0] }}">
+                            <input type="submit" value="Delete" class="btn btn-danger">
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="{{ url_for('employer_dashboard') }}">Go back to dashboard</a>
+    <footer>
+        <p>&copy; 2024 Job Seeker Dashboard. All Rights Reserved.</p>
+    </footer>
+    
+</body>
+</html>

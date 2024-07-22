@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 20px;">
+    <div class="i" style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
+        <form action="{{ url_for('edit') }}" method="POST">
+            <input type="hidden" name="id" id="id" required value="{{ data[0] }}"><br>
+            <label style="display: block; margin-bottom: 8px; font-weight: bold;">Job title</label>
+            <input type="text" name="title" id="title" required value="{{ data[1] }}" style="width: 100%; padding: 8px; margin-bottom: 16px; border: 1px solid #ccc; border-radius: 4px;"><br>
+            <label style="display: block; margin-bottom: 8px; font-weight: bold;">Description</label>
+            <input type="text" name="desc" id="desc" required value="{{ data[2] }}" style="width: 100%; padding: 8px; margin-bottom: 16px; border: 1px solid #ccc; border-radius: 4px;"><br>
+            <label style="display: block; margin-bottom: 8px; font-weight: bold;">Requirements</label>
+            <input type="text" name="req" id="req" required value="{{ data[3] }}" style="width: 100%; padding: 8px; margin-bottom: 16px; border: 1px solid #ccc; border-radius: 4px;"><br>
+            <label style="display: block; margin-bottom: 8px; font-weight: bold;">Location</label>
+            <input type="text" name="location" id="location" required value="{{ data[4] }}" style="width: 100%; padding: 8px; margin-bottom: 16px; border: 1px solid #ccc; border-radius: 4px;"><br>
+            <label style="display: block; margin-bottom: 8px; font-weight: bold;">Industry</label>
+            <input type="text" name="industry" id="industry" required value="{{ data[5] }}" style="width: 100%; padding: 8px; margin-bottom: 16px; border: 1px solid #ccc; border-radius: 4px;"><br>
+            <input type="submit" value="Submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
+        </form>
+    </div>
+</body>
+</html>
